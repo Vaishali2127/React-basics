@@ -5,7 +5,7 @@
 // import UseStateCounter from './advance-topics/1-useState/setup/5-useState-counter';
 
 // import UseEffectBasics from './advance-topics/2-useEffect/setup/1-useEffect-basics';
-// import UseEffectCleanup from './advance-topics/2-useEffect/setup/2-useEffect-cleanup';
+import UseEffectCleanup from './advance-topics/2-useEffect/setup/2-useEffect-cleanup';
 // import UseEffectFetchData from './advance-topics/2-useEffect/setup/3-useEffect-fetch-data';
 
 // import MultipleReturns from './advance-topics/3-conditional-rendering/setup/1-multiple-returns';
@@ -13,7 +13,9 @@
 // import ShowHide from './advance-topics/3-conditional-rendering/setup/3-show-hide';
 
 // import ControlledInputs from './advance-topics/4-forms/setup/1-controlled-inputs';
-import ControlledInputs from './advance-topics/4-forms/setup/2-multiple-inputs';
+// import ControlledMultipleInputs from './advance-topics/4-forms/setup/2-multiple-inputs';
+import UseRefBasics from './advance-topics/5-useRef/setup/1-useRef-basics';
+import UseStateHookRevision from './advance-topics/hooks-revision/useState';
 
 const App = () => {
   return (
@@ -27,7 +29,7 @@ const App = () => {
 
       {/* useEffect */}
       {/* <UseEffectBasics /> */}
-      {/* <UseEffectCleanup /> */}
+      <UseEffectCleanup />
       {/* <UseEffectFetchData /> */}
 
       {/* Conditional Rendering */}
@@ -36,7 +38,14 @@ const App = () => {
       {/* <ShowHide /> */}
 
       {/* Forms */}
-      <ControlledInputs />
+      {/* <ControlledInputs /> */}
+      {/* <ControlledMultipleInputs /> */}
+
+      {/* useRef */}
+      {/* <UseRefBasics /> */}
+
+      {/* hooks-revision */}
+      {/* <UseStateHookRevision /> */}
     </div>
   );
 };

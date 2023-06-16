@@ -6,56 +6,80 @@ import React, { useState } from 'react';
 // value, onChange
 // dynamic object keys
 
-const ControlledInputs = () => {
-  const [firstName, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
+const ControlledMultipleInputs = () => {
+  // const [firstName, setFirstName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [age, setAge] = useState('');
+
+  const [person, setPerson] = useState({ firstName: '', age: '', email: '' });
   const [people, setPeople] = useState([]);
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setPerson({ ...person, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (firstName && email) {
-      const person = { id: new Date().getTime().toString(), firstName, email };
-      console.log(person);
-      setPeople((people) => {
-        return [...people, person];
-      });
-      setFirstName('');
-      setEmail('');
-    } else {
-      console.log('empty values');
+    if (person.firstName && person.age && person.email) {
+      const newPerson = { ...person, id: new Date().getTime().toString() };
+      setPeople([...people, newPerson]);
+      setPerson({ firstName: '', age: '', email: '' });
+
+      console.log(newPerson);
     }
   };
+
   return (
     <>
-      <article>
-        <form className='form' onSubmit={handleSubmit}>
-          <div className='form-control'>
-            <label htmlFor='firstName'>Name : </label>
+      <article className="form">
+        <form>
+          <div className="form-control">
+            <label htmlFor="firstName">Name : </label>
             <input
-              type='text'
-              id='firstName'
-              name='firstName'
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={person.firstName}
+              onChange={handleChange}
+              // onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
-          <div className='form-control'>
-            <label htmlFor='email'>Email : </label>
+          <div className="form-control">
+            <label htmlFor="email">Email : </label>
             <input
-              type='email'
-              id='email'
-              name='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              id="email"
+              name="email"
+              value={person.email}
+              onChange={handleChange}
+              // onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <button type='submit'>add person</button>
+          <div className="form-control">
+            <label htmlFor="age">Age : </label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              value={person.age}
+              onChange={handleChange}
+              // onChange={(e) => setAge(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn" onClick={handleSubmit}>
+            add person
+          </button>
         </form>
-        {people.map((person, index) => {
-          const { id, firstName, email } = person;
+      </article>
+      <article>
+        {people.map((person) => {
+          const { id, firstName, email, age } = person;
           return (
-            <div className='item' key={id}>
+            <div className="item" key={id}>
               <h4>{firstName}</h4>
+              <p>{age}</p>
               <p>{email}</p>
             </div>
           );
@@ -65,4 +89,4 @@ const ControlledInputs = () => {
   );
 };
 
-export default ControlledInputs;
+export default ControlledMultipleInputs;
